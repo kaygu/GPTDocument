@@ -2,7 +2,7 @@ from llama_index import GPTSimpleVectorIndex, Document, download_loader
 import openai
 import os
 
-os.environ['OPENAI_API_KEY'] = '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'
+os.environ['OPENAI_API_KEY'] = 'sk-apikey'
 
 # GoogleDriveReader = download_loader("GoogleDriveReader")
 SimpleDirectoryReader = download_loader("SimpleDirectoryReader")
@@ -13,9 +13,6 @@ if __name__ == "__main__":
     if question == 'y':
         loader = SimpleDirectoryReader('./Files')
         documents = loader.load_data()
-        for doc in documents:
-          print(doc.text)
-        # print(documents)
         index = GPTSimpleVectorIndex(documents)
         index.save_to_disk('index.json')
     else:
